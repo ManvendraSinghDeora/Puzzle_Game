@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform attackRadius;
     private bool isAttacking;
+
+    private bool isInteracting;
 
     #region Dash
     public float timeOfDash = 0.8f;
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
     public GameObject popupbutton;
     public LayerMask InteractableObject;
 
+    public DialogueSystem dialogueSystem;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -62,7 +67,6 @@ public class PlayerController : MonoBehaviour
 
         Dash();
 
-        Interaction();
 
     }
 
@@ -97,6 +101,8 @@ public class PlayerController : MonoBehaviour
     {
         if(canMove)
             rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
+
+        Interaction();
     }
 
     void Dash()
@@ -188,13 +194,11 @@ public class PlayerController : MonoBehaviour
             popupbutton.gameObject.SetActive(true);
             print("Interactable object : " + interact.gameObject.name);
 
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonUp("Interact"))
             {
-                Destroy(interact.gameObject);
+                interact.GetComponent<NPC>().Trigger();
             }
-
         }
-
     }
 
     void UpdateAnimations()
