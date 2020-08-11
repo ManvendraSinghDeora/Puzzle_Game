@@ -2,6 +2,20 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+.userprefs
+/.csproj
+*.pidb
+.suo
+/.sln
+*.user
+*.unityproj
+*.booproj
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -9,7 +23,10 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-
+EcchiPuzzle/Temp/
+EcchiPuzzle/Library/
+EcchiPuzzle/Library/ArtifactDB/
+EcchiPuzzle/Library/**
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
