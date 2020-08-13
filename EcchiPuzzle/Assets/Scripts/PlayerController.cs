@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -69,7 +70,14 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "spikes" || collision.gameObject.tag == "arrow" || 
+            collision.gameObject.tag == "swing")
+        {
+            Application.LoadLevel(0);
+        }
+    }
     void OnAttack()
     {
         if (Input.GetButtonDown("Attack"))

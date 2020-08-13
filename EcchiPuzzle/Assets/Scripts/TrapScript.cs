@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrapScript : MonoBehaviour
 {
     public GameObject arrow;
+    public Vector2 arrowpos;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +20,20 @@ public class TrapScript : MonoBehaviour
         }
         if (collision.tag == "arrow")
         {
-            Destroy(collision.gameObject);
-            RespawnArrow();
+            collision.transform.position = arrowpos;
+            collision.gameObject.SetActive(false);
+            StartCoroutine(RespawnArrow());
         }
 
     }
-
-    void RespawnArrow()
+    IEnumerator RespawnArrow()
     {
+        yield return new WaitForSeconds(2);
 
+        arrow.SetActive(true);
     }
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

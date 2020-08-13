@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/whiteboxing.unity
+    guid: 79949df0b554f11438e90780a0a72d22
   m_configObjects: {}
