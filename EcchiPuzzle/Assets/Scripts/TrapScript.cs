@@ -6,10 +6,11 @@ public class TrapScript : MonoBehaviour
 {
     public GameObject arrow;
     public Vector2 arrowpos;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +22,7 @@ public class TrapScript : MonoBehaviour
         if (collision.tag == "arrow")
         {
             collision.transform.position = arrowpos;
+            anim.Play("arrowanim");
             collision.gameObject.SetActive(false);
             StartCoroutine(RespawnArrow());
         }
@@ -28,7 +30,7 @@ public class TrapScript : MonoBehaviour
     }
     IEnumerator RespawnArrow()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
         arrow.SetActive(true);
     }
